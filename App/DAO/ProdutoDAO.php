@@ -6,19 +6,24 @@ class ProdutoDAO{
 
     function __construct()
     {
+        //entrar no servidor do mysql
         $dsn = "mysql:host=localhost:3307;dbname=db_sistema"; 
 
+        //conecta no servidor de mysql
         $this->conexao = new PDO($dsn, 'root', 'etecjau');
     }
 
+    //esse insert pega as coisas da model e manda na tabela poara que o usuario veja
     function insert(ProdutoModel $model){
 
+        //o ? substitui os valores no banco de dados
         $sql = "INSERT INTO produto
                 (nome, codigo_barras, marca, descricao, fornecedor, valor, estoque, unidade)
                 VALUES (?,?,?,?,?,?,?,?)";
         
         $stmt = $this->conexao->prepare($sql);
 
+        //o binvalue ajuda a dao a substituir a posição dos ?
         $stmt->bindValue(1, $model->nome);
         $stmt->bindValue(2, $model->codigo_barras);
         $stmt->bindValue(3, $model->marca);
@@ -28,10 +33,12 @@ class ProdutoDAO{
         $stmt->bindValue(7, $model->estoque);
         $stmt->bindValue(8, $model->unidade);
 
+        //executa :D
         $stmt->execute();
         
     }
 
+    //vai atualizar no banco de dados
     public function update(ProdutoModel $model){
         $sql = "UPDATE produto SET
                 nome=?, codigo_barras=?, marca=?, descricao=?, fornecedor=?, valor=?, estoque=?, unidade=?
@@ -50,6 +57,7 @@ class ProdutoDAO{
         $stmt->bindValue(9, $model->id);
     }
 
+    //ele retorna os registros na tabela do usuario
     public function select()
     {
         $sql = "SELECT * FROM produto";
@@ -60,6 +68,7 @@ class ProdutoDAO{
         return $stmt->fetchAll(PDO::FETCH_CLASS);
     }
 
+    //vai retornar uma coisa em especifico na tabela
     public function selectById(int $id){
         $sql = "SELECT * FROM produto WHERE id=?";
 
@@ -70,7 +79,7 @@ class ProdutoDAO{
         return $stmt->fetchObject("ProdutoModel");
         
     }
-
+    //deleta um determinado registro
     public function delete(int $id){
         $sql = "DELETE FROM produto WHERE id = ? ";
 
