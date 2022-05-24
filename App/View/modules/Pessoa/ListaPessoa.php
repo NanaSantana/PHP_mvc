@@ -11,6 +11,7 @@
     <table>
         <tr>
             <th></th>
+            <th></th>
             <th>Id</th>
             <th>Nome</th>
             <th>CPF</th>

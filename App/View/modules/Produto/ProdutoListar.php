@@ -11,6 +11,7 @@
     <table>
         <!--campos da tabela-->
         <tr>
+            <th></th>
             <th>Id</th>
             <th>Nome</th>
             <th>Codigo de Barras</th>
