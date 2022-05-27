@@ -54,6 +54,24 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
             ProdutoController::delete();
         break;
 
+    // categoria categoria categoria categoria categoria categoria categoria categoria categoria categoria categoria categoria categoria categoria 
+
+        case '/categoria':
+            CategoriaController::index();
+        break;
+
+        case '/categoria/form':
+            CategoriaController::form();
+        break;
+
+        case '/categoria/save':
+            CategoriaController::save();
+        break;
+
+        case '/categoria/delete':
+            CategoriaController::delete();
+        break;
+
         default:
             echo "Erro 404";
         break;
