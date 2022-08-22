@@ -31,6 +31,7 @@ class PessoaModel
      */
     public function save()
     {
+        include 'DAO\PessoaDAO.php';
         // Instância do objeto e conexão no banco de dados via construtor
         $dao = new PessoaDAO(); 
 
@@ -56,7 +57,8 @@ class PessoaModel
      * $rows será acessada e possibilitará listar os registros vindos do banco de dados
      */
     public function getAllRows()
-    {      
+    {     
+        include 'DAO\PessoaDAO.php'; 
         // Instância do objeto e conexão no banco de dados via construtor
         $dao = new PessoaDAO();
 

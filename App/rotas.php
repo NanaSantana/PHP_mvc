@@ -29,6 +29,7 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     
         case '/pessoa/form':
             //formulario de pessoas
+            //echo "teste";
             PessoaController::form();
         break;
     

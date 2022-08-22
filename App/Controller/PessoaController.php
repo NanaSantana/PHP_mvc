@@ -18,9 +18,9 @@ class PessoaController
      */
     public static function index()
     {     
-        
         $model = new PessoaModel(); // Instância da Model
         $model->getAllRows(); // Obtendo todos os registros, abastecendo a propriedade $rows da model.
+        include 'View\modules\Pessoa\ListaPessoa.php';
 
     }
 
@@ -35,7 +35,7 @@ class PessoaController
         if(isset($_GET['id'])) // Verificando se existe uma variável $_GET
             $model = $model->getById( (int) $_GET['id']); // Typecast e obtendo o model preenchido vindo da DAO.
             // Para saber mais sobre Typecast, leia: https://tiago.blog.br/type-cast-ou-conversao-de-tipos-do-php-isso-pode-te-ajudar-muito/
-
+        include 'View\modules\Pessoa\FormPessoa.php';
     }
 
 
@@ -44,7 +44,7 @@ class PessoaController
      */
     public static function save()
     {
-        
+        include 'Model\PessoaModel.php';
        // Abaixo cada propriedade do objeto sendo abastecida com os dados informados
        // pelo usuário no formulário (note o envio via POST)
        $model = new PessoaModel();
@@ -62,6 +62,7 @@ class PessoaController
        $model->save(); // chamando o método save da model.
 
        header("Location: /pessoa"); // redirecionando o usuário para outra rota.
+       
     }
 
 
