@@ -4,11 +4,20 @@
 //spl --> classesz internas do php ;D
 spl_autoload_register(function ($nome_da_classe) {
 
+    $classe = dirname(__FILE__) . '/../' . $nome_da_classe . ".php";
+
+    if(file_exists($classe)){
+        include $classe;
+    }
+    else{
+        echo 'arquivo não encontrado' . $classe;
+        }
+
     //echo "Tentou dar include de: " . $nome_da_classe;
     //ele producz pra mim o arquiivo q eu queo dentor do mvc
     //ele serve para o sistema inteiro por isso tem o nome_da_classe
 
-    $classe_controller = 'Controller/' . $nome_da_classe . ".php";
+    /*$classe_controller = 'Controller/' . $nome_da_classe . ".php";
     $classe_model = 'Model/' . $nome_da_classe . ".php";
     $classe_dao = 'DAO/' . $nome_da_classe . ".php";
 
@@ -28,5 +37,5 @@ spl_autoload_register(function ($nome_da_classe) {
         include $classe_dao;
     }
 
-    //include 'classes/' . $class . '.class.php';
+    //include 'classes/' . $class . '.class.php';*/
 });

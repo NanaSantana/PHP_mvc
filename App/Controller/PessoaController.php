@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Controller;
+use App\Model\PessoaModel;
 /**
  * Classes Controller são responsáveis por processar as requisições do usuário.
  * Isso significa que toda vez que um usuário chama uma rota, um método (função)
@@ -15,11 +17,11 @@ class PessoaController
      * Para saber mais sobre métodos estáticos, leia: https://www.php.net/manual/pt_BR/language.oop5.static.php
      */
     public static function index()
-    {      
+    {     
+        
         $model = new PessoaModel(); // Instância da Model
         $model->getAllRows(); // Obtendo todos os registros, abastecendo a propriedade $rows da model.
 
-        include 'View/modules/Pessoa/ListaPessoa.php'; // Include da View, propriedade $rows da Model pode ser acessada na View
     }
 
 
@@ -34,7 +36,6 @@ class PessoaController
             $model = $model->getById( (int) $_GET['id']); // Typecast e obtendo o model preenchido vindo da DAO.
             // Para saber mais sobre Typecast, leia: https://tiago.blog.br/type-cast-ou-conversao-de-tipos-do-php-isso-pode-te-ajudar-muito/
 
-        include 'View/modules/Pessoa/FormPessoa.php'; // Include da View. Note que a variável $model está disponível na View.
     }
 
 
@@ -43,7 +44,6 @@ class PessoaController
      */
     public static function save()
     {
-        include 'Model/PessoaModel.php'; // inclusão do arquivo model.
         
        // Abaixo cada propriedade do objeto sendo abastecida com os dados informados
        // pelo usuário no formulário (note o envio via POST)

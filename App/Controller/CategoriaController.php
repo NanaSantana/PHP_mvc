@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Controller;
+use App\Model\CategoriaModel;
+
 class CategoriaController{
 
     public static function index(){

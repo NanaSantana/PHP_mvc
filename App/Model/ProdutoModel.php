@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Model;
+use App\DAO\ProdutoDAO;
+
 class ProdutoModel{
 
     //criando as propriedades igual o da tabela do banco de dados
