@@ -8,7 +8,7 @@ use App\DAO\PessoaDAO;
  * Também é atribuído a Model a validação dos dados da View e controle de acesso aos métodos
  * da DAO.
  */
-class PessoaModel
+class PessoaModel extends Model
 {
     /**
      * Declaração das propriedades conforme campos da tabela no banco de dados.
@@ -18,20 +18,14 @@ class PessoaModel
     public $data_nascimento, $email;
     public $telefone, $endereco;
 
-
-    /**
-     * Propriedade que armazenará o array retornado da DAO com a listagem das pessoas.
-     */
-    public $rows;
-
-
     /**
      * Declaração do método save que chamará a DAO para gravar no banco de dados
      * o model preenchido.
      */
     public function save()
     {
-        include 'DAO\PessoaDAO.php';
+        //include 'DAO\PessoaDAO.php';
+
         // Instância do objeto e conexão no banco de dados via construtor
         $dao = new PessoaDAO(); 
 
@@ -58,7 +52,8 @@ class PessoaModel
      */
     public function getAllRows()
     {     
-        include 'DAO\PessoaDAO.php'; 
+        //include 'DAO\PessoaDAO.php'; 
+
         // Instância do objeto e conexão no banco de dados via construtor
         $dao = new PessoaDAO();
 
@@ -81,13 +76,6 @@ class PessoaModel
 
         // Para saber mais operador ternário, leia: https://pt.stackoverflow.com/questions/56812/uso-de-e-em-php
         return ($obj) ? $obj : new PessoaModel(); // Operador Ternário
-
-        /*if($obj)
-        {
-            return  $obj;
-        } else {
-            return new PessoaModel();
-        }*/
     }
 
 

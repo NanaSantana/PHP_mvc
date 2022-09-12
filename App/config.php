@@ -2,7 +2,7 @@
 
 
 define('BASEDIR', dirname(__FILE__, 2));
-define('VIEWS', BASEDIR . '/View/modules/');
+define('VIEWS', BASEDIR . '/App/View/modules/'); //olhar o \App tava dando erro :C
 
 $_ENV['db']['host'] = 'localhost:3307';
 $_ENV['db']['user'] = 'root';

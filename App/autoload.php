@@ -12,15 +12,3 @@ spl_autoload_register(function ($nome_da_classe) {
     } else
     exit('Arquivo não encontrado. Arquivos:' . $arquivo ."<br/>");
 });
-
-/*spl_autoload_register(function ($nome_da_classe) {
-
-    $classe = dirname(__FILE__) . '/../' . $nome_da_classe . ".php";
-
-    if(file_exists($classe)){
-        include $classe;
-    }
-    else{
-        echo 'arquivo não encontrado' . $classe;
-        }
-});*/

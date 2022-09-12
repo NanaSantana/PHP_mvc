@@ -10,7 +10,7 @@ use App\Model\PessoaModel;
  * buscar algo no banco de dados), redirecionar o usuário de rota, ou mesmo,
  * chamar outra Controller.
  */
-class PessoaController
+class PessoaController extends Controller
 {
     /**
      * Os métodos index serão usados para devolver uma View.
@@ -20,7 +20,17 @@ class PessoaController
     {     
         $model = new PessoaModel(); // Instância da Model
         $model->getAllRows(); // Obtendo todos os registros, abastecendo a propriedade $rows da model.
-        include 'View\modules\Pessoa\ListaPessoa.php';
+        
+        /**
+         * O método render foi idealizado para encapsular o include de views de como que
+         * se o endereço de uma view por passado de forma equivocada nós possamos tratar
+         * o arquivo não encontrado e mostrar uma mensagem mais amigável ao usuário.
+         * Veja que o método recebe dois parâmetros: 1) caminho da view dentro da pasta modules
+         * e 2) o model da view da entidade em questão, este segundo arguimento é opcional.
+         */
+        parent::render('Pessoa/ListaPessoa', $model);
+
+        //include 'View\modules\Pessoa\ListaPessoa.php';
 
     }
 
@@ -35,7 +45,9 @@ class PessoaController
         if(isset($_GET['id'])) // Verificando se existe uma variável $_GET
             $model = $model->getById( (int) $_GET['id']); // Typecast e obtendo o model preenchido vindo da DAO.
             // Para saber mais sobre Typecast, leia: https://tiago.blog.br/type-cast-ou-conversao-de-tipos-do-php-isso-pode-te-ajudar-muito/
-        include 'View\modules\Pessoa\FormPessoa.php';
+        
+            parent::render('Pessoa/FormPessoa', $model);
+            //include 'View\modules\Pessoa\FormPessoa.php';
     }
 
 
@@ -44,7 +56,7 @@ class PessoaController
      */
     public static function save()
     {
-        include 'Model\PessoaModel.php';
+        //include 'Model\PessoaModel.php';
        // Abaixo cada propriedade do objeto sendo abastecida com os dados informados
        // pelo usuário no formulário (note o envio via POST)
        $model = new PessoaModel();
