@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 /**
  * Melhorias
  * 1) palavra chave final no método render da Controller

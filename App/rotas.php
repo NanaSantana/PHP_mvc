@@ -3,6 +3,7 @@
 use App\Controller\
 {
     CategoriaController,
+    LoginController,
     ProdutoController,
     PessoaController
 };
@@ -16,6 +17,21 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 // Para saber mais estrutura switch, leia: https://www.php.net/manual/pt_BR/control-structures.switch.php
     switch($url)
     {
+        case '/login':
+            LoginController::index();
+        break;
+
+        case '/login/auth':
+            LoginController::auth();
+        break;
+
+        case '/logout':
+            LoginController::logout();
+        break;
+
+
+    //pessoa pessoa pessoa pessoa pessoa pessoa pessoa pessoa pessoa pessoa pessoa pessoa pessoa pessoa 
+
         case '/':
             echo "página inicial";
         break;
