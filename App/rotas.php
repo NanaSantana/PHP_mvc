@@ -97,7 +97,25 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
             CategoriaController::delete();
         break;
 
-        default:
-            echo "Erro 404";
-        break;
+    // usuario usuario usuario usuario usuario usuario usuario usuario usuario usuariousuario v usuario vusuario v usuario usuario usuario usuario 
+
+    case '/usuario':
+        UsuarioController::index();
+    break;
+
+    case '/usuario/form':
+        UsuarioController::form();
+    break;
+
+    case '/usuario/save':
+        UsuarioController::save();
+    break;
+
+    case '/usuario/delete':
+        UsuarioController::delete();
+    break;
+
+    default:
+        echo "Erro 404";
+    break;
     }
